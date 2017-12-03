@@ -1,0 +1,21 @@
+[package]
+authors = ["Mathias Gottschlag <mgottschlag@gmail.com>"]
+description = "Peripheral access API for STM32F429 microcontrollers"
+documentation = "https://docs.rs/stm32f429"
+keywords = ["no-std", "arm", "cortex-m", "stm32"]
+license = "MIT OR Apache-2.0"
+name = "stm32f429"
+repository = "https://github.com/japaric/stm32f429"
+version = "0.1.0"
+
+[dependencies]
+cortex-m = "0.3.0"
+bare-metal = "0.1.1"
+vcell = "0.1.0"
+
+[dependencies.cortex-m-rt]
+optional = true
+version = "0.3.0"
+
+[features]
+rt = ["cortex-m-rt"]
