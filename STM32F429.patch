@@ -1,5 +1,5 @@
 --- STM32F429.svd	2017-12-24 12:17:21.525860358 +0100
-+++ STM32F429-modified.svd	2017-12-24 12:17:21.469861183 +0100
++++ STM32F429-modified.svd	2017-12-25 23:02:07.879890238 +0100
 @@ -11,7 +11,7 @@
      <revision>r1p0</revision>
      <endian>little</endian>
@@ -9,7 +9,313 @@
      <nvicPrioBits>3</nvicPrioBits>
      <vendorSystickConfig>false</vendorSystickConfig>
    </cpu>  
-@@ -10736,18 +10736,35 @@
+@@ -9915,36 +9915,18 @@
+           <resetValue>0x24003010</resetValue>
+           <fields>
+             <field>
+-              <name>PLLQ3</name>
+-              <description>Main PLL (PLL) division factor for USB
+-              OTG FS, SDIO and random number generator
+-              clocks</description>
+-              <bitOffset>27</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLQ2</name>
+-              <description>Main PLL (PLL) division factor for USB
+-              OTG FS, SDIO and random number generator
+-              clocks</description>
+-              <bitOffset>26</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLQ1</name>
+-              <description>Main PLL (PLL) division factor for USB
+-              OTG FS, SDIO and random number generator
+-              clocks</description>
+-              <bitOffset>25</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLQ0</name>
++              <name>PLLQ</name>
+               <description>Main PLL (PLL) division factor for USB
+               OTG FS, SDIO and random number generator
+               clocks</description>
+               <bitOffset>24</bitOffset>
+-              <bitWidth>1</bitWidth>
++              <bitWidth>4</bitWidth>
++              <writeConstraint>
++                <range>
++                  <minimum>0</minimum>
++                  <maximum>15</maximum>
++                </range>
++              </writeConstraint>
+             </field>
+             <field>
+               <name>PLLSRC</name>
+@@ -9952,125 +9934,58 @@
+               entry clock source</description>
+               <bitOffset>22</bitOffset>
+               <bitWidth>1</bitWidth>
++              <enumeratedValues>
++                <name>PLLSRC</name>
++                <enumeratedValue>
++                  <name>HSI</name>
++                  <description>HSI clock selected as PLL and PLLI2S clock entry</description>
++                  <value>0</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>HSE</name>
++                  <description>HSE clock selected as PLL and PLLI2S clock entry</description>
++                  <value>1</value>
++                </enumeratedValue>
++              </enumeratedValues>
+             </field>
+             <field>
+-              <name>PLLP1</name>
+-              <description>Main PLL (PLL) division factor for main
+-              system clock</description>
+-              <bitOffset>17</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLP0</name>
++              <name>PLLP</name>
+               <description>Main PLL (PLL) division factor for main
+               system clock</description>
+               <bitOffset>16</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLN8</name>
+-              <description>Main PLL (PLL) multiplication factor for
+-              VCO</description>
+-              <bitOffset>14</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLN7</name>
+-              <description>Main PLL (PLL) multiplication factor for
+-              VCO</description>
+-              <bitOffset>13</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLN6</name>
+-              <description>Main PLL (PLL) multiplication factor for
+-              VCO</description>
+-              <bitOffset>12</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLN5</name>
+-              <description>Main PLL (PLL) multiplication factor for
+-              VCO</description>
+-              <bitOffset>11</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLN4</name>
+-              <description>Main PLL (PLL) multiplication factor for
+-              VCO</description>
+-              <bitOffset>10</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLN3</name>
+-              <description>Main PLL (PLL) multiplication factor for
+-              VCO</description>
+-              <bitOffset>9</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLN2</name>
+-              <description>Main PLL (PLL) multiplication factor for
+-              VCO</description>
+-              <bitOffset>8</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLN1</name>
+-              <description>Main PLL (PLL) multiplication factor for
+-              VCO</description>
+-              <bitOffset>7</bitOffset>
+-              <bitWidth>1</bitWidth>
++              <bitWidth>2</bitWidth>
++              <writeConstraint>
++                <range>
++                  <minimum>0</minimum>
++                  <maximum>3</maximum>
++                </range>
++              </writeConstraint>
+             </field>
+             <field>
+-              <name>PLLN0</name>
++              <name>PLLN</name>
+               <description>Main PLL (PLL) multiplication factor for
+               VCO</description>
+               <bitOffset>6</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLM5</name>
+-              <description>Division factor for the main PLL (PLL)
+-              and audio PLL (PLLI2S) input clock</description>
+-              <bitOffset>5</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLM4</name>
+-              <description>Division factor for the main PLL (PLL)
+-              and audio PLL (PLLI2S) input clock</description>
+-              <bitOffset>4</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLM3</name>
+-              <description>Division factor for the main PLL (PLL)
+-              and audio PLL (PLLI2S) input clock</description>
+-              <bitOffset>3</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLM2</name>
+-              <description>Division factor for the main PLL (PLL)
+-              and audio PLL (PLLI2S) input clock</description>
+-              <bitOffset>2</bitOffset>
+-              <bitWidth>1</bitWidth>
+-            </field>
+-            <field>
+-              <name>PLLM1</name>
+-              <description>Division factor for the main PLL (PLL)
+-              and audio PLL (PLLI2S) input clock</description>
+-              <bitOffset>1</bitOffset>
+-              <bitWidth>1</bitWidth>
++              <bitWidth>9</bitWidth>
++              <writeConstraint>
++                <range>
++                  <minimum>0</minimum>
++                  <maximum>433</maximum>
++                </range>
++              </writeConstraint>
+             </field>
+             <field>
+-              <name>PLLM0</name>
++              <name>PLLM</name>
+               <description>Division factor for the main PLL (PLL)
+               and audio PLL (PLLI2S) input clock</description>
+               <bitOffset>0</bitOffset>
+-              <bitWidth>1</bitWidth>
++              <bitWidth>6</bitWidth>
++              <writeConstraint>
++                <range>
++                  <minimum>0</minimum>
++                  <maximum>63</maximum>
++                </range>
++              </writeConstraint>
+             </field>
+           </fields>
+         </register>
+@@ -10134,6 +10049,34 @@
+               <bitOffset>13</bitOffset>
+               <bitWidth>3</bitWidth>
+               <access>read-write</access>
++              <enumeratedValues>
++                <name>AHBPRE</name>
++                <enumeratedValue>
++                  <name>Div1</name>
++                  <description>AHB clock not divided</description>
++                  <value>0</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Div2</name>
++                  <description>AHB clock divided by 2</description>
++                  <value>4</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Div4</name>
++                  <description>AHB clock divided by 4</description>
++                  <value>5</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Div8</name>
++                  <description>AHB clock divided by 8</description>
++                  <value>6</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Div16</name>
++                  <description>AHB clock divided by 16</description>
++                  <value>7</value>
++                </enumeratedValue>
++              </enumeratedValues>
+             </field>
+             <field>
+               <name>PPRE1</name>
+@@ -10142,6 +10085,8 @@
+               <bitOffset>10</bitOffset>
+               <bitWidth>3</bitWidth>
+               <access>read-write</access>
++              <enumeratedValues derivedFrom="AHBPRE">
++              </enumeratedValues>
+             </field>
+             <field>
+               <name>HPRE</name>
+@@ -10149,6 +10094,53 @@
+               <bitOffset>4</bitOffset>
+               <bitWidth>4</bitWidth>
+               <access>read-write</access>
++              <enumeratedValues>
++                <enumeratedValue>
++                  <name>Div1</name>
++                  <description>System clock not divided</description>
++                  <value>0</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Div2</name>
++                  <description>System clock divided by 2</description>
++                  <value>8</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Div4</name>
++                  <description>System clock divided by 4</description>
++                  <value>9</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Div8</name>
++                  <description>System clock divided by 8</description>
++                  <value>10</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Div16</name>
++                  <description>System clock divided by 16</description>
++                  <value>11</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Div64</name>
++                  <description>System clock divided by 64</description>
++                  <value>12</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Div128</name>
++                  <description>System clock divided by 128</description>
++                  <value>13</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Div256</name>
++                  <description>System clock divided by 256</description>
++                  <value>14</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Div512</name>
++                  <description>System clock divided by 512</description>
++                  <value>15</value>
++                </enumeratedValue>
++              </enumeratedValues>
+             </field>
+             <field>
+               <name>SWS1</name>
+@@ -10736,18 +10728,35 @@
                enable</description>
                <bitOffset>30</bitOffset>
                <bitWidth>1</bitWidth>
@@ -45,7 +351,7 @@
              </field>
              <field>
                <name>ETHMACRXEN</name>
-@@ -10755,6 +10772,8 @@
+@@ -10755,6 +10764,8 @@
                enable</description>
                <bitOffset>27</bitOffset>
                <bitWidth>1</bitWidth>
@@ -54,7 +360,7 @@
              </field>
              <field>
                <name>ETHMACTXEN</name>
-@@ -10762,30 +10781,40 @@
+@@ -10762,30 +10773,40 @@
                enable</description>
                <bitOffset>26</bitOffset>
                <bitWidth>1</bitWidth>
@@ -95,7 +401,7 @@
              </field>
              <field>
                <name>BKPSRAMEN</name>
-@@ -10793,66 +10822,88 @@
+@@ -10793,66 +10814,88 @@
                enable</description>
                <bitOffset>18</bitOffset>
                <bitWidth>1</bitWidth>
@@ -184,7 +490,7 @@
              </field>
            </fields>
          </register>
-@@ -10878,12 +10929,16 @@
+@@ -10878,12 +10921,16 @@
                enable</description>
                <bitOffset>6</bitOffset>
                <bitWidth>1</bitWidth>
@@ -201,7 +507,7 @@
              </field>
              <field>
                <name>CRYPEN</name>
-@@ -10891,12 +10946,16 @@
+@@ -10891,12 +10938,16 @@
                enable</description>
                <bitOffset>4</bitOffset>
                <bitWidth>1</bitWidth>
@@ -218,7 +524,7 @@
              </field>
            </fields>
          </register>
-@@ -10916,6 +10975,8 @@
+@@ -10916,6 +10967,8 @@
                enable</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -227,7 +533,7 @@
              </field>
            </fields>
          </register>
-@@ -10934,54 +10995,72 @@
+@@ -10934,54 +10987,72 @@
                <description>TIM2 clock enable</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -300,7 +606,7 @@
              </field>
              <field>
                <name>WWDGEN</name>
-@@ -10989,72 +11068,96 @@
+@@ -10989,72 +11060,96 @@
                enable</description>
                <bitOffset>11</bitOffset>
                <bitWidth>1</bitWidth>
@@ -397,7 +703,7 @@
              </field>
              <field>
                <name>PWREN</name>
-@@ -11062,12 +11165,16 @@
+@@ -11062,12 +11157,16 @@
                enable</description>
                <bitOffset>28</bitOffset>
                <bitWidth>1</bitWidth>
@@ -414,7 +720,7 @@
              </field>
            </fields>
          </register>
-@@ -11086,54 +11193,72 @@
+@@ -11086,54 +11185,72 @@
                <description>TIM1 clock enable</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -487,7 +793,7 @@
              </field>
              <field>
                <name>SYSCFGEN</name>
-@@ -11141,24 +11266,32 @@
+@@ -11141,24 +11258,32 @@
                enable</description>
                <bitOffset>14</bitOffset>
                <bitWidth>1</bitWidth>
@@ -520,7 +826,7 @@
              </field>
            </fields>
          </register>
-@@ -12000,6 +12133,29 @@
+@@ -12000,6 +12125,29 @@
                0..15)</description>
                <bitOffset>30</bitOffset>
                <bitWidth>2</bitWidth>
@@ -550,7 +856,7 @@
              </field>
              <field>
                <name>MODER14</name>
-@@ -12007,6 +12163,8 @@
+@@ -12007,6 +12155,8 @@
                0..15)</description>
                <bitOffset>28</bitOffset>
                <bitWidth>2</bitWidth>
@@ -559,7 +865,7 @@
              </field>
              <field>
                <name>MODER13</name>
-@@ -12014,6 +12172,8 @@
+@@ -12014,6 +12164,8 @@
                0..15)</description>
                <bitOffset>26</bitOffset>
                <bitWidth>2</bitWidth>
@@ -568,7 +874,7 @@
              </field>
              <field>
                <name>MODER12</name>
-@@ -12021,6 +12181,8 @@
+@@ -12021,6 +12173,8 @@
                0..15)</description>
                <bitOffset>24</bitOffset>
                <bitWidth>2</bitWidth>
@@ -577,7 +883,7 @@
              </field>
              <field>
                <name>MODER11</name>
-@@ -12028,6 +12190,8 @@
+@@ -12028,6 +12182,8 @@
                0..15)</description>
                <bitOffset>22</bitOffset>
                <bitWidth>2</bitWidth>
@@ -586,7 +892,7 @@
              </field>
              <field>
                <name>MODER10</name>
-@@ -12035,6 +12199,8 @@
+@@ -12035,6 +12191,8 @@
                0..15)</description>
                <bitOffset>20</bitOffset>
                <bitWidth>2</bitWidth>
@@ -595,7 +901,7 @@
              </field>
              <field>
                <name>MODER9</name>
-@@ -12042,6 +12208,8 @@
+@@ -12042,6 +12200,8 @@
                0..15)</description>
                <bitOffset>18</bitOffset>
                <bitWidth>2</bitWidth>
@@ -604,7 +910,7 @@
              </field>
              <field>
                <name>MODER8</name>
-@@ -12049,6 +12217,8 @@
+@@ -12049,6 +12209,8 @@
                0..15)</description>
                <bitOffset>16</bitOffset>
                <bitWidth>2</bitWidth>
@@ -613,7 +919,7 @@
              </field>
              <field>
                <name>MODER7</name>
-@@ -12056,6 +12226,8 @@
+@@ -12056,6 +12218,8 @@
                0..15)</description>
                <bitOffset>14</bitOffset>
                <bitWidth>2</bitWidth>
@@ -622,7 +928,7 @@
              </field>
              <field>
                <name>MODER6</name>
-@@ -12063,6 +12235,8 @@
+@@ -12063,6 +12227,8 @@
                0..15)</description>
                <bitOffset>12</bitOffset>
                <bitWidth>2</bitWidth>
@@ -631,7 +937,7 @@
              </field>
              <field>
                <name>MODER5</name>
-@@ -12070,6 +12244,8 @@
+@@ -12070,6 +12236,8 @@
                0..15)</description>
                <bitOffset>10</bitOffset>
                <bitWidth>2</bitWidth>
@@ -640,7 +946,7 @@
              </field>
              <field>
                <name>MODER4</name>
-@@ -12077,6 +12253,8 @@
+@@ -12077,6 +12245,8 @@
                0..15)</description>
                <bitOffset>8</bitOffset>
                <bitWidth>2</bitWidth>
@@ -649,7 +955,7 @@
              </field>
              <field>
                <name>MODER3</name>
-@@ -12084,6 +12262,8 @@
+@@ -12084,6 +12254,8 @@
                0..15)</description>
                <bitOffset>6</bitOffset>
                <bitWidth>2</bitWidth>
@@ -658,7 +964,7 @@
              </field>
              <field>
                <name>MODER2</name>
-@@ -12091,6 +12271,8 @@
+@@ -12091,6 +12263,8 @@
                0..15)</description>
                <bitOffset>4</bitOffset>
                <bitWidth>2</bitWidth>
@@ -667,7 +973,7 @@
              </field>
              <field>
                <name>MODER1</name>
-@@ -12098,6 +12280,8 @@
+@@ -12098,6 +12272,8 @@
                0..15)</description>
                <bitOffset>2</bitOffset>
                <bitWidth>2</bitWidth>
@@ -676,7 +982,7 @@
              </field>
              <field>
                <name>MODER0</name>
-@@ -12105,6 +12289,8 @@
+@@ -12105,6 +12281,8 @@
                0..15)</description>
                <bitOffset>0</bitOffset>
                <bitWidth>2</bitWidth>
@@ -685,7 +991,7 @@
              </field>
            </fields>
          </register>
-@@ -12741,6 +12927,15 @@
+@@ -12741,6 +12919,15 @@
                0..15)</description>
                <bitOffset>31</bitOffset>
                <bitWidth>1</bitWidth>
@@ -701,7 +1007,7 @@
              </field>
              <field>
                <name>BR14</name>
-@@ -12748,6 +12943,8 @@
+@@ -12748,6 +12935,8 @@
                0..15)</description>
                <bitOffset>30</bitOffset>
                <bitWidth>1</bitWidth>
@@ -710,7 +1016,7 @@
              </field>
              <field>
                <name>BR13</name>
-@@ -12755,6 +12952,8 @@
+@@ -12755,6 +12944,8 @@
                0..15)</description>
                <bitOffset>29</bitOffset>
                <bitWidth>1</bitWidth>
@@ -719,7 +1025,7 @@
              </field>
              <field>
                <name>BR12</name>
-@@ -12762,6 +12961,8 @@
+@@ -12762,6 +12953,8 @@
                0..15)</description>
                <bitOffset>28</bitOffset>
                <bitWidth>1</bitWidth>
@@ -728,7 +1034,7 @@
              </field>
              <field>
                <name>BR11</name>
-@@ -12769,6 +12970,8 @@
+@@ -12769,6 +12962,8 @@
                0..15)</description>
                <bitOffset>27</bitOffset>
                <bitWidth>1</bitWidth>
@@ -737,7 +1043,7 @@
              </field>
              <field>
                <name>BR10</name>
-@@ -12776,6 +12979,8 @@
+@@ -12776,6 +12971,8 @@
                0..15)</description>
                <bitOffset>26</bitOffset>
                <bitWidth>1</bitWidth>
@@ -746,7 +1052,7 @@
              </field>
              <field>
                <name>BR9</name>
-@@ -12783,6 +12988,8 @@
+@@ -12783,6 +12980,8 @@
                0..15)</description>
                <bitOffset>25</bitOffset>
                <bitWidth>1</bitWidth>
@@ -755,7 +1061,7 @@
              </field>
              <field>
                <name>BR8</name>
-@@ -12790,6 +12997,8 @@
+@@ -12790,6 +12989,8 @@
                0..15)</description>
                <bitOffset>24</bitOffset>
                <bitWidth>1</bitWidth>
@@ -764,7 +1070,7 @@
              </field>
              <field>
                <name>BR7</name>
-@@ -12797,6 +13006,8 @@
+@@ -12797,6 +12998,8 @@
                0..15)</description>
                <bitOffset>23</bitOffset>
                <bitWidth>1</bitWidth>
@@ -773,7 +1079,7 @@
              </field>
              <field>
                <name>BR6</name>
-@@ -12804,6 +13015,8 @@
+@@ -12804,6 +13007,8 @@
                0..15)</description>
                <bitOffset>22</bitOffset>
                <bitWidth>1</bitWidth>
@@ -782,7 +1088,7 @@
              </field>
              <field>
                <name>BR5</name>
-@@ -12811,6 +13024,8 @@
+@@ -12811,6 +13016,8 @@
                0..15)</description>
                <bitOffset>21</bitOffset>
                <bitWidth>1</bitWidth>
@@ -791,7 +1097,7 @@
              </field>
              <field>
                <name>BR4</name>
-@@ -12818,6 +13033,8 @@
+@@ -12818,6 +13025,8 @@
                0..15)</description>
                <bitOffset>20</bitOffset>
                <bitWidth>1</bitWidth>
@@ -800,7 +1106,7 @@
              </field>
              <field>
                <name>BR3</name>
-@@ -12825,6 +13042,8 @@
+@@ -12825,6 +13034,8 @@
                0..15)</description>
                <bitOffset>19</bitOffset>
                <bitWidth>1</bitWidth>
@@ -809,7 +1115,7 @@
              </field>
              <field>
                <name>BR2</name>
-@@ -12832,6 +13051,8 @@
+@@ -12832,6 +13043,8 @@
                0..15)</description>
                <bitOffset>18</bitOffset>
                <bitWidth>1</bitWidth>
@@ -818,7 +1124,7 @@
              </field>
              <field>
                <name>BR1</name>
-@@ -12839,6 +13060,8 @@
+@@ -12839,6 +13052,8 @@
                0..15)</description>
                <bitOffset>17</bitOffset>
                <bitWidth>1</bitWidth>
@@ -827,7 +1133,7 @@
              </field>
              <field>
                <name>BR0</name>
-@@ -12846,6 +13069,8 @@
+@@ -12846,6 +13061,8 @@
                0..15)</description>
                <bitOffset>16</bitOffset>
                <bitWidth>1</bitWidth>
@@ -836,7 +1142,7 @@
              </field>
              <field>
                <name>BS15</name>
-@@ -12853,6 +13078,15 @@
+@@ -12853,6 +13070,15 @@
                0..15)</description>
                <bitOffset>15</bitOffset>
                <bitWidth>1</bitWidth>
@@ -852,7 +1158,7 @@
              </field>
              <field>
                <name>BS14</name>
-@@ -12860,6 +13094,8 @@
+@@ -12860,6 +13086,8 @@
                0..15)</description>
                <bitOffset>14</bitOffset>
                <bitWidth>1</bitWidth>
@@ -861,7 +1167,7 @@
              </field>
              <field>
                <name>BS13</name>
-@@ -12867,6 +13103,8 @@
+@@ -12867,6 +13095,8 @@
                0..15)</description>
                <bitOffset>13</bitOffset>
                <bitWidth>1</bitWidth>
@@ -870,7 +1176,7 @@
              </field>
              <field>
                <name>BS12</name>
-@@ -12874,6 +13112,8 @@
+@@ -12874,6 +13104,8 @@
                0..15)</description>
                <bitOffset>12</bitOffset>
                <bitWidth>1</bitWidth>
@@ -879,7 +1185,7 @@
              </field>
              <field>
                <name>BS11</name>
-@@ -12881,6 +13121,8 @@
+@@ -12881,6 +13113,8 @@
                0..15)</description>
                <bitOffset>11</bitOffset>
                <bitWidth>1</bitWidth>
@@ -888,7 +1194,7 @@
              </field>
              <field>
                <name>BS10</name>
-@@ -12888,6 +13130,8 @@
+@@ -12888,6 +13122,8 @@
                0..15)</description>
                <bitOffset>10</bitOffset>
                <bitWidth>1</bitWidth>
@@ -897,7 +1203,7 @@
              </field>
              <field>
                <name>BS9</name>
-@@ -12895,6 +13139,8 @@
+@@ -12895,6 +13131,8 @@
                0..15)</description>
                <bitOffset>9</bitOffset>
                <bitWidth>1</bitWidth>
@@ -906,7 +1212,7 @@
              </field>
              <field>
                <name>BS8</name>
-@@ -12902,6 +13148,8 @@
+@@ -12902,6 +13140,8 @@
                0..15)</description>
                <bitOffset>8</bitOffset>
                <bitWidth>1</bitWidth>
@@ -915,7 +1221,7 @@
              </field>
              <field>
                <name>BS7</name>
-@@ -12909,6 +13157,8 @@
+@@ -12909,6 +13149,8 @@
                0..15)</description>
                <bitOffset>7</bitOffset>
                <bitWidth>1</bitWidth>
@@ -924,7 +1230,7 @@
              </field>
              <field>
                <name>BS6</name>
-@@ -12916,6 +13166,8 @@
+@@ -12916,6 +13158,8 @@
                0..15)</description>
                <bitOffset>6</bitOffset>
                <bitWidth>1</bitWidth>
@@ -933,7 +1239,7 @@
              </field>
              <field>
                <name>BS5</name>
-@@ -12923,6 +13175,8 @@
+@@ -12923,6 +13167,8 @@
                0..15)</description>
                <bitOffset>5</bitOffset>
                <bitWidth>1</bitWidth>
@@ -942,7 +1248,7 @@
              </field>
              <field>
                <name>BS4</name>
-@@ -12930,6 +13184,8 @@
+@@ -12930,6 +13176,8 @@
                0..15)</description>
                <bitOffset>4</bitOffset>
                <bitWidth>1</bitWidth>
@@ -951,7 +1257,7 @@
              </field>
              <field>
                <name>BS3</name>
-@@ -12937,6 +13193,8 @@
+@@ -12937,6 +13185,8 @@
                0..15)</description>
                <bitOffset>3</bitOffset>
                <bitWidth>1</bitWidth>
@@ -960,7 +1266,7 @@
              </field>
              <field>
                <name>BS2</name>
-@@ -12944,6 +13202,8 @@
+@@ -12944,6 +13194,8 @@
                0..15)</description>
                <bitOffset>2</bitOffset>
                <bitWidth>1</bitWidth>
@@ -969,7 +1275,7 @@
              </field>
              <field>
                <name>BS1</name>
-@@ -12951,6 +13211,8 @@
+@@ -12951,6 +13203,8 @@
                0..15)</description>
                <bitOffset>1</bitOffset>
                <bitWidth>1</bitWidth>
@@ -978,7 +1284,7 @@
              </field>
              <field>
                <name>BS0</name>
-@@ -12958,6 +13220,8 @@
+@@ -12958,6 +13212,8 @@
                0..15)</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -987,7 +1293,7 @@
              </field>
            </fields>
          </register>
-@@ -13288,6 +13552,29 @@
+@@ -13288,6 +13544,29 @@
                0..15)</description>
                <bitOffset>30</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1017,7 +1323,7 @@
              </field>
              <field>
                <name>MODER14</name>
-@@ -13295,6 +13582,8 @@
+@@ -13295,6 +13574,8 @@
                0..15)</description>
                <bitOffset>28</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1026,7 +1332,7 @@
              </field>
              <field>
                <name>MODER13</name>
-@@ -13302,6 +13591,8 @@
+@@ -13302,6 +13583,8 @@
                0..15)</description>
                <bitOffset>26</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1035,7 +1341,7 @@
              </field>
              <field>
                <name>MODER12</name>
-@@ -13309,6 +13600,8 @@
+@@ -13309,6 +13592,8 @@
                0..15)</description>
                <bitOffset>24</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1044,7 +1350,7 @@
              </field>
              <field>
                <name>MODER11</name>
-@@ -13316,6 +13609,8 @@
+@@ -13316,6 +13601,8 @@
                0..15)</description>
                <bitOffset>22</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1053,7 +1359,7 @@
              </field>
              <field>
                <name>MODER10</name>
-@@ -13323,6 +13618,8 @@
+@@ -13323,6 +13610,8 @@
                0..15)</description>
                <bitOffset>20</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1062,7 +1368,7 @@
              </field>
              <field>
                <name>MODER9</name>
-@@ -13330,6 +13627,8 @@
+@@ -13330,6 +13619,8 @@
                0..15)</description>
                <bitOffset>18</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1071,7 +1377,7 @@
              </field>
              <field>
                <name>MODER8</name>
-@@ -13337,6 +13636,8 @@
+@@ -13337,6 +13628,8 @@
                0..15)</description>
                <bitOffset>16</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1080,7 +1386,7 @@
              </field>
              <field>
                <name>MODER7</name>
-@@ -13344,6 +13645,8 @@
+@@ -13344,6 +13637,8 @@
                0..15)</description>
                <bitOffset>14</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1089,7 +1395,7 @@
              </field>
              <field>
                <name>MODER6</name>
-@@ -13351,6 +13654,8 @@
+@@ -13351,6 +13646,8 @@
                0..15)</description>
                <bitOffset>12</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1098,7 +1404,7 @@
              </field>
              <field>
                <name>MODER5</name>
-@@ -13358,6 +13663,8 @@
+@@ -13358,6 +13655,8 @@
                0..15)</description>
                <bitOffset>10</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1107,7 +1413,7 @@
              </field>
              <field>
                <name>MODER4</name>
-@@ -13365,6 +13672,8 @@
+@@ -13365,6 +13664,8 @@
                0..15)</description>
                <bitOffset>8</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1116,7 +1422,7 @@
              </field>
              <field>
                <name>MODER3</name>
-@@ -13372,6 +13681,8 @@
+@@ -13372,6 +13673,8 @@
                0..15)</description>
                <bitOffset>6</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1125,7 +1431,7 @@
              </field>
              <field>
                <name>MODER2</name>
-@@ -13379,6 +13690,8 @@
+@@ -13379,6 +13682,8 @@
                0..15)</description>
                <bitOffset>4</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1134,7 +1440,7 @@
              </field>
              <field>
                <name>MODER1</name>
-@@ -13386,6 +13699,8 @@
+@@ -13386,6 +13691,8 @@
                0..15)</description>
                <bitOffset>2</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1143,7 +1449,7 @@
              </field>
              <field>
                <name>MODER0</name>
-@@ -13393,6 +13708,8 @@
+@@ -13393,6 +13700,8 @@
                0..15)</description>
                <bitOffset>0</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1152,7 +1458,7 @@
              </field>
            </fields>
          </register>
-@@ -14029,6 +14346,15 @@
+@@ -14029,6 +14338,15 @@
                0..15)</description>
                <bitOffset>31</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1168,7 +1474,7 @@
              </field>
              <field>
                <name>BR14</name>
-@@ -14036,6 +14362,8 @@
+@@ -14036,6 +14354,8 @@
                0..15)</description>
                <bitOffset>30</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1177,7 +1483,7 @@
              </field>
              <field>
                <name>BR13</name>
-@@ -14043,6 +14371,8 @@
+@@ -14043,6 +14363,8 @@
                0..15)</description>
                <bitOffset>29</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1186,7 +1492,7 @@
              </field>
              <field>
                <name>BR12</name>
-@@ -14050,6 +14380,8 @@
+@@ -14050,6 +14372,8 @@
                0..15)</description>
                <bitOffset>28</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1195,7 +1501,7 @@
              </field>
              <field>
                <name>BR11</name>
-@@ -14057,6 +14389,8 @@
+@@ -14057,6 +14381,8 @@
                0..15)</description>
                <bitOffset>27</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1204,7 +1510,7 @@
              </field>
              <field>
                <name>BR10</name>
-@@ -14064,6 +14398,8 @@
+@@ -14064,6 +14390,8 @@
                0..15)</description>
                <bitOffset>26</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1213,7 +1519,7 @@
              </field>
              <field>
                <name>BR9</name>
-@@ -14071,6 +14407,8 @@
+@@ -14071,6 +14399,8 @@
                0..15)</description>
                <bitOffset>25</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1222,7 +1528,7 @@
              </field>
              <field>
                <name>BR8</name>
-@@ -14078,6 +14416,8 @@
+@@ -14078,6 +14408,8 @@
                0..15)</description>
                <bitOffset>24</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1231,7 +1537,7 @@
              </field>
              <field>
                <name>BR7</name>
-@@ -14085,6 +14425,8 @@
+@@ -14085,6 +14417,8 @@
                0..15)</description>
                <bitOffset>23</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1240,7 +1546,7 @@
              </field>
              <field>
                <name>BR6</name>
-@@ -14092,6 +14434,8 @@
+@@ -14092,6 +14426,8 @@
                0..15)</description>
                <bitOffset>22</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1249,7 +1555,7 @@
              </field>
              <field>
                <name>BR5</name>
-@@ -14099,6 +14443,8 @@
+@@ -14099,6 +14435,8 @@
                0..15)</description>
                <bitOffset>21</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1258,7 +1564,7 @@
              </field>
              <field>
                <name>BR4</name>
-@@ -14106,6 +14452,8 @@
+@@ -14106,6 +14444,8 @@
                0..15)</description>
                <bitOffset>20</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1267,7 +1573,7 @@
              </field>
              <field>
                <name>BR3</name>
-@@ -14113,6 +14461,8 @@
+@@ -14113,6 +14453,8 @@
                0..15)</description>
                <bitOffset>19</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1276,7 +1582,7 @@
              </field>
              <field>
                <name>BR2</name>
-@@ -14120,6 +14470,8 @@
+@@ -14120,6 +14462,8 @@
                0..15)</description>
                <bitOffset>18</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1285,7 +1591,7 @@
              </field>
              <field>
                <name>BR1</name>
-@@ -14127,6 +14479,8 @@
+@@ -14127,6 +14471,8 @@
                0..15)</description>
                <bitOffset>17</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1294,7 +1600,7 @@
              </field>
              <field>
                <name>BR0</name>
-@@ -14134,6 +14488,8 @@
+@@ -14134,6 +14480,8 @@
                0..15)</description>
                <bitOffset>16</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1303,7 +1609,7 @@
              </field>
              <field>
                <name>BS15</name>
-@@ -14141,6 +14497,15 @@
+@@ -14141,6 +14489,15 @@
                0..15)</description>
                <bitOffset>15</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1319,7 +1625,7 @@
              </field>
              <field>
                <name>BS14</name>
-@@ -14148,6 +14513,8 @@
+@@ -14148,6 +14505,8 @@
                0..15)</description>
                <bitOffset>14</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1328,7 +1634,7 @@
              </field>
              <field>
                <name>BS13</name>
-@@ -14155,6 +14522,8 @@
+@@ -14155,6 +14514,8 @@
                0..15)</description>
                <bitOffset>13</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1337,7 +1643,7 @@
              </field>
              <field>
                <name>BS12</name>
-@@ -14162,6 +14531,8 @@
+@@ -14162,6 +14523,8 @@
                0..15)</description>
                <bitOffset>12</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1346,7 +1652,7 @@
              </field>
              <field>
                <name>BS11</name>
-@@ -14169,6 +14540,8 @@
+@@ -14169,6 +14532,8 @@
                0..15)</description>
                <bitOffset>11</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1355,7 +1661,7 @@
              </field>
              <field>
                <name>BS10</name>
-@@ -14176,6 +14549,8 @@
+@@ -14176,6 +14541,8 @@
                0..15)</description>
                <bitOffset>10</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1364,7 +1670,7 @@
              </field>
              <field>
                <name>BS9</name>
-@@ -14183,6 +14558,8 @@
+@@ -14183,6 +14550,8 @@
                0..15)</description>
                <bitOffset>9</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1373,7 +1679,7 @@
              </field>
              <field>
                <name>BS8</name>
-@@ -14190,6 +14567,8 @@
+@@ -14190,6 +14559,8 @@
                0..15)</description>
                <bitOffset>8</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1382,7 +1688,7 @@
              </field>
              <field>
                <name>BS7</name>
-@@ -14197,6 +14576,8 @@
+@@ -14197,6 +14568,8 @@
                0..15)</description>
                <bitOffset>7</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1391,7 +1697,7 @@
              </field>
              <field>
                <name>BS6</name>
-@@ -14204,6 +14585,8 @@
+@@ -14204,6 +14577,8 @@
                0..15)</description>
                <bitOffset>6</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1400,7 +1706,7 @@
              </field>
              <field>
                <name>BS5</name>
-@@ -14211,6 +14594,8 @@
+@@ -14211,6 +14586,8 @@
                0..15)</description>
                <bitOffset>5</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1409,7 +1715,7 @@
              </field>
              <field>
                <name>BS4</name>
-@@ -14218,6 +14603,8 @@
+@@ -14218,6 +14595,8 @@
                0..15)</description>
                <bitOffset>4</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1418,7 +1724,7 @@
              </field>
              <field>
                <name>BS3</name>
-@@ -14225,6 +14612,8 @@
+@@ -14225,6 +14604,8 @@
                0..15)</description>
                <bitOffset>3</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1427,7 +1733,7 @@
              </field>
              <field>
                <name>BS2</name>
-@@ -14232,6 +14621,8 @@
+@@ -14232,6 +14613,8 @@
                0..15)</description>
                <bitOffset>2</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1436,7 +1742,7 @@
              </field>
              <field>
                <name>BS1</name>
-@@ -14239,6 +14630,8 @@
+@@ -14239,6 +14622,8 @@
                0..15)</description>
                <bitOffset>1</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1445,7 +1751,7 @@
              </field>
              <field>
                <name>BS0</name>
-@@ -14246,6 +14639,8 @@
+@@ -14246,6 +14631,8 @@
                0..15)</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1454,7 +1760,7 @@
              </field>
            </fields>
          </register>
-@@ -14544,6 +14939,29 @@
+@@ -14544,6 +14931,29 @@
                0..15)</description>
                <bitOffset>30</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1484,7 +1790,7 @@
              </field>
              <field>
                <name>MODER14</name>
-@@ -14551,6 +14969,8 @@
+@@ -14551,6 +14961,8 @@
                0..15)</description>
                <bitOffset>28</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1493,7 +1799,7 @@
              </field>
              <field>
                <name>MODER13</name>
-@@ -14558,6 +14978,8 @@
+@@ -14558,6 +14970,8 @@
                0..15)</description>
                <bitOffset>26</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1502,7 +1808,7 @@
              </field>
              <field>
                <name>MODER12</name>
-@@ -14565,6 +14987,8 @@
+@@ -14565,6 +14979,8 @@
                0..15)</description>
                <bitOffset>24</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1511,7 +1817,7 @@
              </field>
              <field>
                <name>MODER11</name>
-@@ -14572,6 +14996,8 @@
+@@ -14572,6 +14988,8 @@
                0..15)</description>
                <bitOffset>22</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1520,7 +1826,7 @@
              </field>
              <field>
                <name>MODER10</name>
-@@ -14579,6 +15005,8 @@
+@@ -14579,6 +14997,8 @@
                0..15)</description>
                <bitOffset>20</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1529,7 +1835,7 @@
              </field>
              <field>
                <name>MODER9</name>
-@@ -14586,6 +15014,8 @@
+@@ -14586,6 +15006,8 @@
                0..15)</description>
                <bitOffset>18</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1538,7 +1844,7 @@
              </field>
              <field>
                <name>MODER8</name>
-@@ -14593,6 +15023,8 @@
+@@ -14593,6 +15015,8 @@
                0..15)</description>
                <bitOffset>16</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1547,7 +1853,7 @@
              </field>
              <field>
                <name>MODER7</name>
-@@ -14600,6 +15032,8 @@
+@@ -14600,6 +15024,8 @@
                0..15)</description>
                <bitOffset>14</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1556,7 +1862,7 @@
              </field>
              <field>
                <name>MODER6</name>
-@@ -14607,6 +15041,8 @@
+@@ -14607,6 +15033,8 @@
                0..15)</description>
                <bitOffset>12</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1565,7 +1871,7 @@
              </field>
              <field>
                <name>MODER5</name>
-@@ -14614,6 +15050,8 @@
+@@ -14614,6 +15042,8 @@
                0..15)</description>
                <bitOffset>10</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1574,7 +1880,7 @@
              </field>
              <field>
                <name>MODER4</name>
-@@ -14621,6 +15059,8 @@
+@@ -14621,6 +15051,8 @@
                0..15)</description>
                <bitOffset>8</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1583,7 +1889,7 @@
              </field>
              <field>
                <name>MODER3</name>
-@@ -14628,6 +15068,8 @@
+@@ -14628,6 +15060,8 @@
                0..15)</description>
                <bitOffset>6</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1592,7 +1898,7 @@
              </field>
              <field>
                <name>MODER2</name>
-@@ -14635,6 +15077,8 @@
+@@ -14635,6 +15069,8 @@
                0..15)</description>
                <bitOffset>4</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1601,7 +1907,7 @@
              </field>
              <field>
                <name>MODER1</name>
-@@ -14642,6 +15086,8 @@
+@@ -14642,6 +15078,8 @@
                0..15)</description>
                <bitOffset>2</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1610,7 +1916,7 @@
              </field>
              <field>
                <name>MODER0</name>
-@@ -14649,6 +15095,8 @@
+@@ -14649,6 +15087,8 @@
                0..15)</description>
                <bitOffset>0</bitOffset>
                <bitWidth>2</bitWidth>
@@ -1619,7 +1925,7 @@
              </field>
            </fields>
          </register>
-@@ -15285,6 +15733,15 @@
+@@ -15285,6 +15725,15 @@
                0..15)</description>
                <bitOffset>31</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1635,7 +1941,7 @@
              </field>
              <field>
                <name>BR14</name>
-@@ -15292,6 +15749,8 @@
+@@ -15292,6 +15741,8 @@
                0..15)</description>
                <bitOffset>30</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1644,7 +1950,7 @@
              </field>
              <field>
                <name>BR13</name>
-@@ -15299,6 +15758,8 @@
+@@ -15299,6 +15750,8 @@
                0..15)</description>
                <bitOffset>29</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1653,7 +1959,7 @@
              </field>
              <field>
                <name>BR12</name>
-@@ -15306,6 +15767,8 @@
+@@ -15306,6 +15759,8 @@
                0..15)</description>
                <bitOffset>28</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1662,7 +1968,7 @@
              </field>
              <field>
                <name>BR11</name>
-@@ -15313,6 +15776,8 @@
+@@ -15313,6 +15768,8 @@
                0..15)</description>
                <bitOffset>27</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1671,7 +1977,7 @@
              </field>
              <field>
                <name>BR10</name>
-@@ -15320,6 +15785,8 @@
+@@ -15320,6 +15777,8 @@
                0..15)</description>
                <bitOffset>26</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1680,7 +1986,7 @@
              </field>
              <field>
                <name>BR9</name>
-@@ -15327,6 +15794,8 @@
+@@ -15327,6 +15786,8 @@
                0..15)</description>
                <bitOffset>25</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1689,7 +1995,7 @@
              </field>
              <field>
                <name>BR8</name>
-@@ -15334,6 +15803,8 @@
+@@ -15334,6 +15795,8 @@
                0..15)</description>
                <bitOffset>24</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1698,7 +2004,7 @@
              </field>
              <field>
                <name>BR7</name>
-@@ -15341,6 +15812,8 @@
+@@ -15341,6 +15804,8 @@
                0..15)</description>
                <bitOffset>23</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1707,7 +2013,7 @@
              </field>
              <field>
                <name>BR6</name>
-@@ -15348,6 +15821,8 @@
+@@ -15348,6 +15813,8 @@
                0..15)</description>
                <bitOffset>22</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1716,7 +2022,7 @@
              </field>
              <field>
                <name>BR5</name>
-@@ -15355,6 +15830,8 @@
+@@ -15355,6 +15822,8 @@
                0..15)</description>
                <bitOffset>21</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1725,7 +2031,7 @@
              </field>
              <field>
                <name>BR4</name>
-@@ -15362,6 +15839,8 @@
+@@ -15362,6 +15831,8 @@
                0..15)</description>
                <bitOffset>20</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1734,7 +2040,7 @@
              </field>
              <field>
                <name>BR3</name>
-@@ -15369,6 +15848,8 @@
+@@ -15369,6 +15840,8 @@
                0..15)</description>
                <bitOffset>19</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1743,7 +2049,7 @@
              </field>
              <field>
                <name>BR2</name>
-@@ -15376,6 +15857,8 @@
+@@ -15376,6 +15849,8 @@
                0..15)</description>
                <bitOffset>18</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1752,7 +2058,7 @@
              </field>
              <field>
                <name>BR1</name>
-@@ -15383,6 +15866,8 @@
+@@ -15383,6 +15858,8 @@
                0..15)</description>
                <bitOffset>17</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1761,7 +2067,7 @@
              </field>
              <field>
                <name>BR0</name>
-@@ -15390,6 +15875,8 @@
+@@ -15390,6 +15867,8 @@
                0..15)</description>
                <bitOffset>16</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1770,7 +2076,7 @@
              </field>
              <field>
                <name>BS15</name>
-@@ -15397,6 +15884,15 @@
+@@ -15397,6 +15876,15 @@
                0..15)</description>
                <bitOffset>15</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1786,7 +2092,7 @@
              </field>
              <field>
                <name>BS14</name>
-@@ -15404,6 +15900,8 @@
+@@ -15404,6 +15892,8 @@
                0..15)</description>
                <bitOffset>14</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1795,7 +2101,7 @@
              </field>
              <field>
                <name>BS13</name>
-@@ -15411,6 +15909,8 @@
+@@ -15411,6 +15901,8 @@
                0..15)</description>
                <bitOffset>13</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1804,7 +2110,7 @@
              </field>
              <field>
                <name>BS12</name>
-@@ -15418,6 +15918,8 @@
+@@ -15418,6 +15910,8 @@
                0..15)</description>
                <bitOffset>12</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1813,7 +2119,7 @@
              </field>
              <field>
                <name>BS11</name>
-@@ -15425,6 +15927,8 @@
+@@ -15425,6 +15919,8 @@
                0..15)</description>
                <bitOffset>11</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1822,7 +2128,7 @@
              </field>
              <field>
                <name>BS10</name>
-@@ -15432,6 +15936,8 @@
+@@ -15432,6 +15928,8 @@
                0..15)</description>
                <bitOffset>10</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1831,7 +2137,7 @@
              </field>
              <field>
                <name>BS9</name>
-@@ -15439,6 +15945,8 @@
+@@ -15439,6 +15937,8 @@
                0..15)</description>
                <bitOffset>9</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1840,7 +2146,7 @@
              </field>
              <field>
                <name>BS8</name>
-@@ -15446,6 +15954,8 @@
+@@ -15446,6 +15946,8 @@
                0..15)</description>
                <bitOffset>8</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1849,7 +2155,7 @@
              </field>
              <field>
                <name>BS7</name>
-@@ -15453,6 +15963,8 @@
+@@ -15453,6 +15955,8 @@
                0..15)</description>
                <bitOffset>7</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1858,7 +2164,7 @@
              </field>
              <field>
                <name>BS6</name>
-@@ -15460,6 +15972,8 @@
+@@ -15460,6 +15964,8 @@
                0..15)</description>
                <bitOffset>6</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1867,7 +2173,7 @@
              </field>
              <field>
                <name>BS5</name>
-@@ -15467,6 +15981,8 @@
+@@ -15467,6 +15973,8 @@
                0..15)</description>
                <bitOffset>5</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1876,7 +2182,7 @@
              </field>
              <field>
                <name>BS4</name>
-@@ -15474,6 +15990,8 @@
+@@ -15474,6 +15982,8 @@
                0..15)</description>
                <bitOffset>4</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1885,7 +2191,7 @@
              </field>
              <field>
                <name>BS3</name>
-@@ -15481,6 +15999,8 @@
+@@ -15481,6 +15991,8 @@
                0..15)</description>
                <bitOffset>3</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1894,7 +2200,7 @@
              </field>
              <field>
                <name>BS2</name>
-@@ -15488,6 +16008,8 @@
+@@ -15488,6 +16000,8 @@
                0..15)</description>
                <bitOffset>2</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1903,7 +2209,7 @@
              </field>
              <field>
                <name>BS1</name>
-@@ -15495,6 +16017,8 @@
+@@ -15495,6 +16009,8 @@
                0..15)</description>
                <bitOffset>1</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1912,7 +2218,7 @@
              </field>
              <field>
                <name>BS0</name>
-@@ -15502,6 +16026,8 @@
+@@ -15502,6 +16018,8 @@
                0..15)</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1921,7 +2227,37 @@
              </field>
            </fields>
          </register>
-@@ -21413,6 +21939,18 @@
+@@ -19105,6 +19623,29 @@
+               selection</description>
+               <bitOffset>14</bitOffset>
+               <bitWidth>2</bitWidth>
++              <enumeratedValues>
++                <name>VOS</name>
++                <enumeratedValue>
++                  <name>Reserved</name>
++                  <description>Reserved (Scale 3 mode selected)</description>
++                  <value>0</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Scale3</name>
++                  <description>Scale 3 mode</description>
++                  <value>1</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Scale2</name>
++                  <description>Scale 2 mode</description>
++                  <value>2</value>
++                </enumeratedValue>
++                <enumeratedValue>
++                  <name>Scale1</name>
++                  <description>Scale 1 mode</description>
++                  <value>3</value>
++                </enumeratedValue>
++              </enumeratedValues>
+             </field>
+             <field>
+               <name>ODEN</name>
+@@ -21413,6 +21954,18 @@
                <description>One-pulse mode</description>
                <bitOffset>3</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1940,7 +2276,7 @@
              </field>
              <field>
                <name>URS</name>
-@@ -21431,6 +21969,18 @@
+@@ -21431,6 +21984,18 @@
                <description>Counter enable</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1959,7 +2295,7 @@
              </field>
            </fields>
          </register>
-@@ -21770,6 +22320,27 @@
+@@ -21770,6 +22335,27 @@
                <description>Update interrupt flag</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -1987,7 +2323,7 @@
              </field>
            </fields>
          </register>
-@@ -22240,6 +22811,12 @@
+@@ -22240,6 +22826,12 @@
                <description>Prescaler value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2000,7 +2336,7 @@
              </field>
            </fields>
          </register>
-@@ -22535,6 +23112,18 @@
+@@ -22535,6 +23127,18 @@
                <description>One-pulse mode</description>
                <bitOffset>3</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2019,7 +2355,7 @@
              </field>
              <field>
                <name>URS</name>
-@@ -22553,6 +23142,18 @@
+@@ -22553,6 +23157,18 @@
                <description>Counter enable</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2038,7 +2374,7 @@
              </field>
            </fields>
          </register>
-@@ -22806,6 +23407,27 @@
+@@ -22806,6 +23422,27 @@
                <description>Update interrupt flag</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2066,7 +2402,7 @@
              </field>
            </fields>
          </register>
-@@ -23239,6 +23861,12 @@
+@@ -23239,6 +23876,12 @@
                <description>Prescaler value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2079,7 +2415,7 @@
              </field>
            </fields>
          </register>
-@@ -23262,6 +23890,12 @@
+@@ -23262,6 +23905,12 @@
                <description>Low Auto-reload value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2092,7 +2428,7 @@
              </field>
            </fields>
          </register>
-@@ -23481,6 +24115,18 @@
+@@ -23481,6 +24130,18 @@
                <description>One-pulse mode</description>
                <bitOffset>3</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2111,7 +2447,7 @@
              </field>
              <field>
                <name>URS</name>
-@@ -23499,6 +24145,18 @@
+@@ -23499,6 +24160,18 @@
                <description>Counter enable</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2130,7 +2466,7 @@
              </field>
            </fields>
          </register>
-@@ -23752,6 +24410,27 @@
+@@ -23752,6 +24425,27 @@
                <description>Update interrupt flag</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2158,7 +2494,7 @@
              </field>
            </fields>
          </register>
-@@ -24185,6 +24864,12 @@
+@@ -24185,6 +24879,12 @@
                <description>Prescaler value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2171,7 +2507,7 @@
              </field>
            </fields>
          </register>
-@@ -24208,6 +24893,12 @@
+@@ -24208,6 +24908,12 @@
                <description>Low Auto-reload value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2184,7 +2520,7 @@
              </field>
            </fields>
          </register>
-@@ -24424,6 +25115,18 @@
+@@ -24424,6 +25130,18 @@
                <description>One-pulse mode</description>
                <bitOffset>3</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2203,7 +2539,7 @@
              </field>
              <field>
                <name>URS</name>
-@@ -24442,6 +25145,18 @@
+@@ -24442,6 +25160,18 @@
                <description>Counter enable</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2222,7 +2558,7 @@
              </field>
            </fields>
          </register>
-@@ -24695,6 +25410,27 @@
+@@ -24695,6 +25425,27 @@
                <description>Update interrupt flag</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2250,7 +2586,7 @@
              </field>
            </fields>
          </register>
-@@ -25128,6 +25864,12 @@
+@@ -25128,6 +25879,12 @@
                <description>Prescaler value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2263,7 +2599,7 @@
              </field>
            </fields>
          </register>
-@@ -25151,6 +25893,12 @@
+@@ -25151,6 +25908,12 @@
                <description>Low Auto-reload value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2276,7 +2612,7 @@
              </field>
            </fields>
          </register>
-@@ -25347,6 +26095,18 @@
+@@ -25347,6 +26110,18 @@
                <description>One-pulse mode</description>
                <bitOffset>3</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2295,7 +2631,7 @@
              </field>
              <field>
                <name>URS</name>
-@@ -25365,6 +26125,18 @@
+@@ -25365,6 +26140,18 @@
                <description>Counter enable</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2314,7 +2650,7 @@
              </field>
            </fields>
          </register>
-@@ -25499,6 +26271,27 @@
+@@ -25499,6 +26286,27 @@
                <description>Update interrupt flag</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2342,7 +2678,7 @@
              </field>
            </fields>
          </register>
-@@ -25741,6 +26534,12 @@
+@@ -25741,6 +26549,12 @@
                <description>Prescaler value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2355,7 +2691,7 @@
              </field>
            </fields>
          </register>
-@@ -25850,6 +26649,18 @@
+@@ -25850,6 +26664,18 @@
                <description>Counter enable</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2374,7 +2710,7 @@
              </field>
            </fields>
          </register>
-@@ -25905,6 +26716,27 @@
+@@ -25905,6 +26731,27 @@
                <description>Update interrupt flag</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2402,7 +2738,7 @@
              </field>
            </fields>
          </register>
-@@ -26067,6 +26899,12 @@
+@@ -26067,6 +26914,12 @@
                <description>Prescaler value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2415,7 +2751,7 @@
              </field>
            </fields>
          </register>
-@@ -26199,6 +27037,18 @@
+@@ -26199,6 +27052,18 @@
                <description>Counter enable</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2434,7 +2770,7 @@
              </field>
            </fields>
          </register>
-@@ -26254,6 +27104,27 @@
+@@ -26254,6 +27119,27 @@
                <description>Update interrupt flag</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2462,7 +2798,7 @@
              </field>
            </fields>
          </register>
-@@ -26416,6 +27287,12 @@
+@@ -26416,6 +27302,12 @@
                <description>Prescaler value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2475,7 +2811,7 @@
              </field>
            </fields>
          </register>
-@@ -26504,6 +27381,18 @@
+@@ -26504,6 +27396,18 @@
                <description>One-pulse mode</description>
                <bitOffset>3</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2494,7 +2830,7 @@
              </field>
              <field>
                <name>URS</name>
-@@ -26522,6 +27411,18 @@
+@@ -26522,6 +27426,18 @@
                <description>Counter enable</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2513,7 +2849,7 @@
              </field>
            </fields>
          </register>
-@@ -26579,6 +27480,27 @@
+@@ -26579,6 +27495,27 @@
                <description>Update interrupt flag</description>
                <bitOffset>0</bitOffset>
                <bitWidth>1</bitWidth>
@@ -2541,7 +2877,7 @@
              </field>
            </fields>
          </register>
-@@ -26630,6 +27552,12 @@
+@@ -26630,6 +27567,12 @@
                <description>Prescaler value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2554,7 +2890,7 @@
              </field>
            </fields>
          </register>
-@@ -26647,6 +27575,12 @@
+@@ -26647,6 +27590,12 @@
                <description>Low Auto-reload value</description>
                <bitOffset>0</bitOffset>
                <bitWidth>16</bitWidth>
@@ -2567,3 +2903,16 @@
              </field>
            </fields>
          </register>
+@@ -48478,6 +49427,12 @@
+               <bitOffset>0</bitOffset>
+               <bitWidth>3</bitWidth>
+               <access>read-write</access>
++              <writeConstraint>
++                <range>
++                  <minimum>0</minimum>
++                  <maximum>7</maximum>
++                </range>
++              </writeConstraint>
+             </field>
+             <field>
+               <name>PRFTEN</name>
